@@ -1,4 +1,4 @@
-#  🎁 Advent of Code 2022 - PHP resolutions  🎁
+#  🎁 Advent of Code 2022 - PHP solutions  🎁
 
 ### Instalation
 ```bash
@@ -29,7 +29,7 @@ php run.php 1
 
 ### Create new task
 
-Create ne task and data for the first day
+Create new task and data for the first day
 ```bash
 php run.php 1 create
 ```
