@@ -1,0 +1,13 @@
+{
+  "require": {
+    "php": "^8.0",
+    "php-ds/php-ds": "^1.4",
+    "ext-gmp": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tools\\": "Tools/",
+      "Days\\": "Days/"
+    }
+  }
+}
