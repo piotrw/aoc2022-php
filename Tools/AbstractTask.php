@@ -16,7 +16,7 @@ abstract class AbstractTask implements TaskInterface
     {
     }
 
-    public function taskResult(int $firstResult = null, int $secondResult = null)
+    public function taskResult(string $firstResult = null, string $secondResult = null)
     {
         $this->output->result([
             MessageEnum::HR,
