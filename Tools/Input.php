@@ -85,13 +85,17 @@ class Input
         if (is_null($filename)) {
             $filename = $this->isDemo() ? "demo.txt" : "input.txt";
         }
-        
+
         if (!file_exists($dataDir . $filename)) {
             throw new Exception(sprintf('File %s not exist!', $filename));
         }
 
         $file = file_get_contents($dataDir . $filename);
-        return explode("\n", $file);
+        if ($file) {
+            return explode("\n", $file);
+        }
+
+        throw new Exception(sprintf('Data file "%s" is empty', $dataDir . $filename));
     }
 
 }
