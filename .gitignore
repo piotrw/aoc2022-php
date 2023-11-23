@@ -1,5 +1,4 @@
 .idea
 vendor
-old
-*/_template
-*/*/input.txt
+*/input*.txt
+aoc-engine-2022

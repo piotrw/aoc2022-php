@@ -8,6 +8,7 @@ class Input
 {
     protected ?string $day = null;
     protected bool $demo = false;
+    protected bool $create = false;
     protected bool $help = false;
     protected Config $config;
 
@@ -23,9 +24,12 @@ class Input
                 case 'demo' :
                     $this->demo = true;
                     break;
+                case 'create' :
+                    $this->create = true;
+                    break;
                 default :
                     if (is_numeric($item)) {
-                        $this->day = str_pad($item, 2, '0', STR_PAD_LEFT);
+                        $this->day = str_pad(abs($item), 2, '0', STR_PAD_LEFT);
                     }
             }
         }
@@ -56,6 +60,14 @@ class Input
     /**
      * @return bool
      */
+    public function isCreate(): bool
+    {
+        return $this->create;
+    }
+
+    /**
+     * @return bool
+     */
     public function isHelp(): bool
     {
         return $this->help;
@@ -66,15 +78,16 @@ class Input
      */
     public function loadData(?string $filename = null): array
     {
+        $dataDir = $this->config->getDataDir() . DIRECTORY_SEPARATOR . 'day' . $this->getDay() . DIRECTORY_SEPARATOR;
         if (is_null($filename)) {
-            $filename = $this->isDemo() ? "demo{$this->getDay()}.txt" : "input{$this->getDay()}.txt";
+            $filename = $this->isDemo() ? "demo.txt" : "input.txt";
         }
-
-        if (!file_exists($this->config->getDataDir() . DIRECTORY_SEPARATOR . $filename)) {
+        
+        if (!file_exists($dataDir . $filename)) {
             throw new Exception(sprintf('File %s not exist!', $filename));
         }
 
-        $file = file_get_contents($this->config->getDataDir() . DIRECTORY_SEPARATOR . $filename);
+        $file = file_get_contents($dataDir . $filename);
         return explode("\n", $file);
     }
 
