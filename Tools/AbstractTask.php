@@ -27,6 +27,8 @@ abstract class AbstractTask implements TaskInterface
     }
 
     /**
+     * @param string|null $filename If empty it will load default input/demo file
+     * @return string[]
      * @throws Exception
      */
     public function loadData(?string $filename = null): array
