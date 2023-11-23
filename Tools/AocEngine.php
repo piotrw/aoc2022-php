@@ -29,7 +29,7 @@ class AocEngine
      */
     protected function init(): void
     {
-        $this->output->title(sprintf(MessageEnum::INTRO, $this->config->getYear(), $this->input->getDay()));
+        $this->output->title(sprintf(MessageEnum::INTRO, $this->config->getYear(), $this->input->getDay() ?: '??'));
 
         if (!$this->input->isHelp() && is_null($this->input->getDay())) {
             throw new Exception('Day is not defined!');
