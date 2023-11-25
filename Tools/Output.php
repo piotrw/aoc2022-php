@@ -25,6 +25,11 @@ class Output
         echo $messages . PHP_EOL;
     }
 
+    public function newLine(int $count = 1)
+    {
+        echo str_pad(PHP_EOL, $count, PHP_EOL);
+    }
+
     public function hr(int $length = null): void
     {
         if ($length) {
